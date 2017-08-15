@@ -8,6 +8,8 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { LibrosService } from './libros/libros.service';
+import { SesionService } from './servicios/sesion.service';
+
 
 import { MaterializeModule } from 'angular2-materialize';
 import { LibrosComponent } from './libros/libros.component';
@@ -18,6 +20,7 @@ import { CabeceraComponent } from './plantilla/cabecera/cabecera.component';
 import { PiePaginaComponent } from './plantilla/pie-pagina/pie-pagina.component';
 import { MenuComponent } from './plantilla/menu/menu.component';
 import { LoginComponent } from './admin/login/login.component';
+import { DetallesPartidoComponent } from './detalles-partido/detalles-partido.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { LoginComponent } from './admin/login/login.component';
     CabeceraComponent,
     PiePaginaComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    DetallesPartidoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import { LoginComponent } from './admin/login/login.component';
     HttpModule
   ],
   providers: [
-    LibrosService
+    LibrosService,
+    SesionService,
   ],
   bootstrap: [AppComponent]
 })

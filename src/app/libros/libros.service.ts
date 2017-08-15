@@ -17,8 +17,8 @@ export class LibrosService {
 
     let options = new RequestOptions({ headers: headers });
 
-    // return this.http.get("https://api-tiendalibros.herokuapp.com/libro", options)
-    return this.http.get("http://localhost:2000/admin/ciudades", options)
+    return this.http.get("https://api-tiendalibros.herokuapp.com/libro", options)
+    // return this.http.get("http://localhost:2000/admin/ciudades", options)
     
       .map(res => res.json());
   }
