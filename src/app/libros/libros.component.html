@@ -1,0 +1,13 @@
+<div class="progress" *ngIf="!libros">
+  <div class="indeterminate"></div>
+</div>
+
+<div class="container">
+
+  <ul class="collection" *ngIf="libros">
+    <li class="collection-item" *ngFor="let libro of libros" (click)="mostrarActivo(miItem, libro)" #miItem>
+      <div>{{libro.nombre}}<a [routerLink]="['/detalles', libro.id]" class="secondary-content"><i class="material-icons">send</i></a></div>
+    </li>
+  </ul>
+
+</div>
