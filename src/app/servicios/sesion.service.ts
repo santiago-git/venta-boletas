@@ -20,14 +20,12 @@ export class SesionService {
     return false;
   }
 
-  CanDeactivate(){
-    // if (this.estaAutenticado()) {
-      return false;
-    // }
+  CanDeactivate() {
+    return (this.estaAutenticado());
   }
 
   crearSesion(usuario) {
-    this.usuario=usuario;
+    this.usuario = usuario;
     window.localStorage.setItem('usuario', JSON.stringify(usuario));
   }
 
