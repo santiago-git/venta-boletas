@@ -13,15 +13,17 @@ const routes: Routes = [
     path: 'admin', canActivate: [SesionService], children: [
       { path: 'partidos', component: PartidosComponent, data: { title: "partidos" } },
       { path: 'partidos/nuevo', component: NuevoPartidoComponent, data: { title: "nuevo" } },
-      { path: 'login', component: LoginComponent, data: { title: "nuevo" } },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      // { path: 'login', component: LoginComponent, data: { title: "nuevo" } },
+      { path: '', redirectTo: 'partidos', pathMatch: 'full' },
+      { path: '**', redirectTo: 'partidos' },
     ]
   },
   { path: 'partido/detalles/:partidoId', component: DetallesPartidoComponent, data: { title: "partidoId" } },
+  // { path: 'login', canDeactivate: [SesionService], component: LoginComponent, data: { title: "Login" } },
   { path: 'login', component: LoginComponent, data: { title: "Login" } },
   { path: 'libros', component: LibrosComponent },
   { path: 'detalles/:libroId', component: DetallesComponent },
-  { path: '**', redirectTo: 'login' },
+  // { path: '**', redirectTo: 'login' },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
