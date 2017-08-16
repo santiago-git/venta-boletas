@@ -8,7 +8,6 @@ import { LoginComponent } from './admin/login/login.component';
 import { DetallesPartidoComponent } from './detalles-partido/detalles-partido.component';
 import { SesionService } from './servicios/sesion.service';
 
-
 const routes: Routes = [
   {
     path: 'admin', canActivate: [SesionService], children: [

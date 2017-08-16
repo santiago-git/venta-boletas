@@ -8,16 +8,36 @@ export class SesionService {
 
   constructor(private router: Router) { }
 
-  canActivate() {
+  usuario: Object;
 
-    if("algo"=="algo"){
+  canActivate() {
+    if (this.obtenerUsuario()) {
       return true;
     }
 
-    console.log("No esta logueado")
-    
     this.router.navigate(['/login']);
     return false;
+  }
+
+  crearSesion(usuario) {
+    window.localStorage.setItem('usuario', JSON.stringify(usuario));
+  }
+
+  destruirSesion() {
+    this.usuario = null;
+    window.localStorage.clear();
+  }
+
+  obtenerUsuario() {
+    var usuario: any = this.usuario;
+    if (!usuario) {
+      usuario = window.localStorage.getItem('usuario');
+    }
+    return usuario;
+  };
+
+  estaAutenticado() {
+    return (this.obtenerUsuario() != null);
   }
 
 }

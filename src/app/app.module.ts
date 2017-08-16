@@ -10,7 +10,6 @@ import { HttpModule } from '@angular/http';
 import { LibrosService } from './libros/libros.service';
 import { SesionService } from './servicios/sesion.service';
 
-
 import { MaterializeModule } from 'angular2-materialize';
 import { LibrosComponent } from './libros/libros.component';
 import { DetallesComponent } from './detalles/detalles.component';
