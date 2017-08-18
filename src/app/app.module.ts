@@ -20,6 +20,7 @@ import { PiePaginaComponent } from './plantilla/pie-pagina/pie-pagina.component'
 import { MenuComponent } from './plantilla/menu/menu.component';
 import { LoginComponent } from './admin/login/login.component';
 import { DetallesPartidoComponent } from './detalles-partido/detalles-partido.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DetallesPartidoComponent } from './detalles-partido/detalles-partido.co
     PiePaginaComponent,
     MenuComponent,
     LoginComponent,
-    DetallesPartidoComponent
+    DetallesPartidoComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

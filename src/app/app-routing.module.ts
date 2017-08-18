@@ -7,23 +7,26 @@ import { NuevoPartidoComponent } from './admin/nuevo-partido/nuevo-partido.compo
 import { LoginComponent } from './admin/login/login.component';
 import { DetallesPartidoComponent } from './detalles-partido/detalles-partido.component';
 import { SesionService } from './servicios/sesion.service';
+import { AdminComponent } from './admin/admin/admin.component';
 
 const routes: Routes = [
   {
-    path: 'admin', canActivate: [SesionService], children: [
-      { path: 'partidos', component: PartidosComponent, data: { title: "partidos" } },
-      { path: 'partidos/nuevo', component: NuevoPartidoComponent, data: { title: "nuevo" } },
-      // { path: 'login', component: LoginComponent, data: { title: "nuevo" } },
-      { path: '', redirectTo: 'partidos', pathMatch: 'full' },
-      { path: '**', redirectTo: 'partidos' },
+    path: 'admin', component: AdminComponent, canActivate: [SesionService], children: [
+      {
+        path: 'partido', children: [
+          { path: '', component: PartidosComponent, data: { title: "nuevo" } },
+          { path: 'nuevo', component: NuevoPartidoComponent, data: { title: "nuevo" } },
+          { path: ':libroId', component: DetallesComponent },
+        ]
+      },
+      { path: '', redirectTo: 'partido', pathMatch: 'full' },
+      { path: '**', redirectTo: 'partido' },
     ]
   },
-  { path: 'partido/detalles/:partidoId', component: DetallesPartidoComponent, data: { title: "partidoId" } },
   // { path: 'login', canDeactivate: [SesionService], component: LoginComponent, data: { title: "Login" } },
   { path: 'login', component: LoginComponent, data: { title: "Login" } },
   { path: 'libros', component: LibrosComponent },
-  { path: 'detalles/:libroId', component: DetallesComponent },
-  // { path: '**', redirectTo: 'login' },
+  { path: '**', redirectTo: 'login' },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 

@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, CanDeactivate } from '@angular/router';
 
-
 @Injectable()
-export class SesionService {
+export class SesionService implements CanActivate {
   // router: any;
 
   usuario: Object;
 
   constructor(private router: Router) { }
 
-  canActivate() {
+  canActivate(): boolean {
     // console.log(this.estaAutenticado());
     if (this.estaAutenticado()) {
       return true;
@@ -20,8 +19,14 @@ export class SesionService {
     return false;
   }
 
-  CanDeactivate() {
-    return (this.estaAutenticado());
+  CanDeactivate(): boolean {
+    // console.log(this.estaAutenticado());
+    if (this.estaAutenticado()) {
+      return true;
+    }
+
+    this.router.navigate(['/login']);
+    return false;
   }
 
   crearSesion(usuario) {

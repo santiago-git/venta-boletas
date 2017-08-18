@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
 
     this.SesionService.crearSesion(usuario.correo);
-    this.router.navigate(['/admin/partidos']);
+    this.router.navigate(['/admin']);
   }
 
 }

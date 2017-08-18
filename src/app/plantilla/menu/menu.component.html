@@ -1,15 +1,15 @@
 <ul id="slide-out" class="side-nav fixed">
-  <li><a [routerLink]="['login']">Login</a></li>
+  <li><a [routerLink]="['partido']">partidos</a></li>
+  <li><a [routerLink]="['partido/nuevo']">nuevo</a></li>
   <li><a [routerLink]="" (click)="cerrarSesion()">Cerrar sesión</a></li>
-  <li><a [routerLink]="['libros']">Libros</a></li>
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
       <li>
         <a class="collapsible-header">Partidos<i class="material-icons">arrow_drop_down</i></a>
         <div class="collapsible-body">
           <ul>
-            <li><a [routerLink]="['admin/partidos']">Ver</a></li>
-            <li><a [routerLink]="['admin/partidos/nuevo']">Nuevo</a></li>
+            <li><a [routerLink]="['']">Ver</a></li>
+            <li><a [routerLink]="['nuevo']">Nuevo</a></li>
           </ul>
         </div>
       </li>
