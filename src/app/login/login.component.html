@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row valign-wrapper">
+    <div class="col offset-m2 offset-l3 s12 m8 l6">
+      <div class="card">
+        <div class="card-content row">
+          <span class="card-title teal-text" align="center">
+              <h2>Iniciar sesión</h2>
+          </span>
+          <form (ngSubmit)=" login(usuario)">
+            <div class="input-field col s12">
+              <input id="correo" type="email" class="validate" [(ngModel)]="usuario.correo" name="correo">
+              <label for="correo" data-error="Ingresa un correo válido">Correo electrónico</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="contrasena" type="password" class="validate" [(ngModel)]="usuario.contrasena" name="contrasena">
+              <label for="contrasena">Contraseña</label>
+            </div>
+            <label class="forgot-pass">
+                    <a class='teal-text' href='#!'>¿Olvidaste tu contraseña?</a>
+                  </label>
+            <div class="remember-field col s12">
+              <input type="checkbox" id="remember" />
+              <label for="remember">Recordar sesión</label><br><br>
+            </div>
+            <div class="input-field submit-field col s12" align="center">
+              <button *ngIf="!cargando" type='submit' name='btn_login' class='btn col s12 waves-effect teal'>Entrar</button>
+              <div *ngIf="cargando" class="preloader-wrapper active">
+                <div class="spinner-layer spinner-red-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- <div class="card-action">
+              <a href="#">This is a link</a>
+            </div> -->
+      </div>
+    </div>
+  </div>
+</div>

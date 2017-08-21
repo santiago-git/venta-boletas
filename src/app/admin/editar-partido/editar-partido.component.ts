@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
-  selector: 'app-detalles-partido',
-  templateUrl: './detalles-partido.component.html',
-  styleUrls: ['./detalles-partido.component.css']
+  selector: 'app-editar-partido',
+  templateUrl: './editar-partido.component.html',
+  styleUrls: ['./editar-partido.component.css']
 })
-export class DetallesPartidoComponent implements OnInit {
+export class EditarPartidoComponent implements OnInit {
 
   parametro: Number;
 
@@ -17,7 +17,5 @@ export class DetallesPartidoComponent implements OnInit {
       this.parametro = params.partidoId;
     })
   }
-
-
 
 }

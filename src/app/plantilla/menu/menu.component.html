@@ -1,6 +1,16 @@
 <ul id="slide-out" class="side-nav fixed">
-  <li><a [routerLink]="['partido']">partidos</a></li>
-  <li><a [routerLink]="['partido/nuevo']">nuevo</a></li>
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <img src="assets/partido.jpg">
+      </div>
+      <a href="#!user"><img class="circle" src="assets/user.jpeg"></a>
+      <a href="#!name"><span class="white-text name">Usuario</span></a>
+      <a href="#!email"><span class="white-text email">usuario@usuario.com</span></a>
+    </div>
+  </li>
+  <li [routerLinkActive]="['active']"><a routerLink="partido/lista" class="waves-effect waves-orange">partidos</a></li>
+  <li [routerLinkActive]="['active']"><a [routerLink]="['partido/nuevo']">crear partido</a></li>
   <li><a [routerLink]="" (click)="cerrarSesion()">Cerrar sesión</a></li>
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
@@ -8,8 +18,8 @@
         <a class="collapsible-header">Partidos<i class="material-icons">arrow_drop_down</i></a>
         <div class="collapsible-body">
           <ul>
-            <li><a [routerLink]="['']">Ver</a></li>
-            <li><a [routerLink]="['nuevo']">Nuevo</a></li>
+            <li><a [routerLink]="['partido']">Ver</a></li>
+            <li><a [routerLink]="['partido/nuevo']">Nuevo</a></li>
           </ul>
         </div>
       </li>

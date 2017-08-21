@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SesionService } from '../../servicios/sesion.service';
+import { SesionService } from '../servicios/sesion.service';
 
 @Component({
   selector: 'app-login',
@@ -13,18 +13,24 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  cargando:Boolean=false;
   usuario = {
     correo: "roms@roms.com",
     contrasena: "roms@roms.com"
   }
 
   login(usuario){
+    this.cargando=true;
+    var this_=this;
+    // setTimeout(function(){
+      this_.SesionService.crearSesion(usuario.correo);
+      this_.router.navigate(['/admin']);
+      this_.cargando=false;
+    // },3000);
     console.log(usuario);
 
 
-    this.SesionService.crearSesion(usuario.correo);
-    this.router.navigate(['/admin']);
+    
   }
 
 }

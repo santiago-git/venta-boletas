@@ -12,21 +12,21 @@ import { SesionService } from './servicios/sesion.service';
 
 import { MaterializeModule } from 'angular2-materialize';
 import { LibrosComponent } from './libros/libros.component';
-import { DetallesComponent } from './detalles/detalles.component';
 import { PartidosComponent } from './admin/partidos/partidos.component';
 import { NuevoPartidoComponent } from './admin/nuevo-partido/nuevo-partido.component';
 import { CabeceraComponent } from './plantilla/cabecera/cabecera.component';
 import { PiePaginaComponent } from './plantilla/pie-pagina/pie-pagina.component';
 import { MenuComponent } from './plantilla/menu/menu.component';
-import { LoginComponent } from './admin/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { DetallesPartidoComponent } from './detalles-partido/detalles-partido.component';
-import { AdminComponent } from './admin/admin/admin.component';
+import { AdminComponent } from './admin/admin.component';
+import { HomeComponent } from './home/home.component';
+import { EditarPartidoComponent } from './admin/editar-partido/editar-partido.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LibrosComponent,
-    DetallesComponent,
     PartidosComponent,
     NuevoPartidoComponent,
     CabeceraComponent,
@@ -34,7 +34,9 @@ import { AdminComponent } from './admin/admin/admin.component';
     MenuComponent,
     LoginComponent,
     DetallesPartidoComponent,
-    AdminComponent
+    AdminComponent,
+    HomeComponent,
+    EditarPartidoComponent
   ],
   imports: [
     BrowserModule,

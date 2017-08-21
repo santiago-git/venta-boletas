@@ -1,0 +1,36 @@
+<header>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- <li><a href="sass.html">Sass</a></li> -->
+        <!-- <li><a href="badges.html">Components</a></li> -->
+        
+        <li><a [routerLink]="['/login']">Iniciar Sesion</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6 l4 xl4" *ngFor="let libro of libros">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="assets/partido.jpg">
+          <span class="card-title">Millonarios vs Junior</span>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+        </div>
+        <div class="card-action">
+          <a [routerLink]="['/detalles/', libro.id]">Ver partido</a>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+          <p>{{libro.descripcion}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
