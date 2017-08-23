@@ -10,7 +10,6 @@ export class SesionService implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(): boolean {
-    // console.log(this.estaAutenticado());
     if (this.estaAutenticado()) {
       return true;
     }
@@ -20,7 +19,6 @@ export class SesionService implements CanActivate {
   }
 
   CanDeactivate(): boolean {
-    // console.log(this.estaAutenticado());
     if (this.estaAutenticado()) {
       return true;
     }

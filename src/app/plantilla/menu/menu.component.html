@@ -9,20 +9,7 @@
       <a href="#!email"><span class="white-text email">usuario@usuario.com</span></a>
     </div>
   </li>
-  <li [routerLinkActive]="['active']"><a routerLink="partido/lista" class="waves-effect waves-orange">partidos</a></li>
-  <li [routerLinkActive]="['active']"><a [routerLink]="['partido/nuevo']">crear partido</a></li>
+  <li [routerLinkActive]="['active']"><a routerLink="partido/lista" class="waves-effect waves-orange">Partidos</a></li>
+  <li [routerLinkActive]="['active']"><a [routerLink]="['partido/nuevo']" class="waves-effect waves-orange">Crear partido</a></li>
   <li><a [routerLink]="" (click)="cerrarSesion()">Cerrar sesión</a></li>
-  <li class="no-padding">
-    <ul class="collapsible collapsible-accordion">
-      <li>
-        <a class="collapsible-header">Partidos<i class="material-icons">arrow_drop_down</i></a>
-        <div class="collapsible-body">
-          <ul>
-            <li><a [routerLink]="['partido']">Ver</a></li>
-            <li><a [routerLink]="['partido/nuevo']">Nuevo</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </li>
 </ul>
