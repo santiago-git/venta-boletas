@@ -34,13 +34,75 @@
         <!-- <input id="fecha" type="text" class="datepicker" required [(ngModel)]="partido.fecha" name="fecha">
         <label for="fecha">Fecha</label> -->
       </div>
-    </div>  
+    </div>
 
+    <div class="row">
+      <h4 class="teal-text" align="center">Localidades</h4>
+      <div class="col s6 m3">
+        <div class="col s12">
+          <h5 class="teal-text">Norte</h5>
+        </div>
+        <div class="input-field col s12">
+          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
+          <label for="cant_max_boletas">Número de boletas</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="precio1" type="number" class="validate">
+          <label for="precio1">Precio</label>
+        </div>
+      </div>
+
+      <div class="col s6 m3">
+        <div class="col s12">
+          <h5 class="teal-text">Sur</h5>
+        </div>
+        <div class="input-field col s12">
+          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
+          <label for="cant_max_boletas">Número de boletas</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="precio1" type="number" class="validate">
+          <label for="precio1">Precio</label>
+        </div>
+      </div>
+
+      <div class="col s6 m3">
+        <div class="col s12">
+          <h5 class="teal-text">Oriente</h5>
+        </div>
+        <div class="input-field col s12">
+          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
+          <label for="cant_max_boletas">Cantidad máxima de boletas</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="precio1" type="number" class="validate">
+          <label for="precio1">Precio</label>
+        </div>
+      </div>
+
+      <div class="col s6 m3">
+        <div class="col s12">
+          <h5 class="teal-text">Occidente</h5>
+        </div>
+        <div class="input-field col s12">
+          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
+          <label for="cant_max_boletas">Cantidad máxima de boletas</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="precio1" type="number" class="validate">
+          <label for="precio1">Precio</label>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <div class="input-field col s12">
         <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
         <label for="cant_max_boletas">Cantidad máxima de boletas</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="precio1" type="number" class="validate">
+        <label for="precio1">Precio</label>
       </div>
     </div>
 
