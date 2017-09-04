@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PartidosService } from './partidos.service';
 
-declare var jQuery: any;
 declare var $: any;
+declare var Materialize: any;
 
 @Component({
   selector: 'app-partidos',
@@ -37,7 +37,7 @@ export class PartidosComponent implements OnInit {
 
   ObtenerPartidos(): void {
     this.PartidosService.cargarPartidos().subscribe(
-      res => { this.partidos = res; console.log(res) },
+      res => { this.partidos = res;},
       err => { console.log(err); alert(err._body); }
     );
   }
@@ -52,9 +52,13 @@ export class PartidosComponent implements OnInit {
   eliminarPartido() {
     this.PartidosService.eliminarPartido(this.idPartido).subscribe(
       res => {
+        if(res==1){
+          Materialize.toast('Se ha eliminado el partido', 4000);
+          this.ObtenerPartidos();
+          $('#modalEliminar').modal('close');
+        }
         console.log(res);
-        this.ObtenerPartidos();
-        $('#modalEliminar').modal('close');
+
       },
       err => {
         console.log(err); alert(err._body);
