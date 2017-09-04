@@ -8,7 +8,13 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { LibrosService } from './libros/libros.service';
+import { LoginService } from './login/login.service';
+
+import { HomeService } from './home/home.service';
 import { SesionService } from './servicios/sesion.service';
+import { ConstantesService } from './servicios/constantes.service';
+import { PartidosService } from './admin/partidos/partidos.service';
+import { NuevoPartidoService } from './admin/nuevo-partido/nuevo-partido.service';
 
 import { MaterializeModule } from 'angular2-materialize';
 import { LibrosComponent } from './libros/libros.component';
@@ -46,8 +52,13 @@ import { EditarPartidoComponent } from './admin/editar-partido/editar-partido.co
     HttpModule
   ],
   providers: [
-    LibrosService,
+    ConstantesService,
     SesionService,
+    LibrosService,
+    HomeService,
+    LoginService,
+    PartidosService,
+    NuevoPartidoService
   ],
   bootstrap: [AppComponent]
 })

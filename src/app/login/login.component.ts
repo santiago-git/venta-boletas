@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SesionService } from '../servicios/sesion.service';
+import { LoginService } from './login.service';
+
+declare var jQuery: any;
+declare var $: any;
+declare var Materialize: any;
 
 @Component({
   selector: 'app-login',
@@ -9,27 +14,44 @@ import { SesionService } from '../servicios/sesion.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private SesionService: SesionService, private router: Router) {
+  constructor(private SesionService: SesionService, private LoginService: LoginService, private router: Router) {
     if (this.SesionService.estaAutenticado()) {
       this.router.navigate(['/admin']);
     }
   }
 
-  ngOnInit() {}
-
+  ngOnInit() { }
+  
   cargando: Boolean = false;
   usuario = {
-    correo: "roms@roms.com",
-    contrasena: "roms@roms.com"
+    nom_usuario: "santi@santi.com",
+    contrasena: "santi"
   }
 
   login(usuario) {
     this.cargando = true;
-    var this_ = this;
+    // var this_ = this;
+
+    this.LoginService.iniciarSesion(usuario).subscribe(
+      res => {
+        console.log(res);
+        if (res.id != null) {
+          this.SesionService.crearSesion(res);
+          this.router.navigate(['/admin']);
+        } else {
+          Materialize.toast('Usuario o contraseña incorrecta', 4000) // 4000 is the duration of the toast
+        }
+        this.cargando = false;
+      },
+      err => {
+        console.log(err);
+        this.cargando = false;
+        alert(err._body);
+      }
+    );
+
+
     // setTimeout(function(){
-    this_.SesionService.crearSesion(usuario.correo);
-    this_.router.navigate(['/admin']);
-    this_.cargando = false;
     // },3000);
     // console.log(usuario);
 

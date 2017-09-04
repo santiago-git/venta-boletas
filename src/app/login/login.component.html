@@ -8,8 +8,8 @@
           </span>
           <form (ngSubmit)=" login(usuario)">
             <div class="input-field col s12">
-              <input id="correo" type="email" class="validate" [(ngModel)]="usuario.correo" name="correo">
-              <label for="correo" data-error="Ingresa un correo válido">Correo electrónico</label>
+              <input id="nom_usuario" type="email" class="validate" [(ngModel)]="usuario.nom_usuario" name="nom_usuario">
+              <label for="nom_usuario" data-error="Ingresa un correo válido">Nombre de usuario</label>
             </div>
             <div class="input-field col s12">
               <input id="contrasena" type="password" class="validate" [(ngModel)]="usuario.contrasena" name="contrasena">

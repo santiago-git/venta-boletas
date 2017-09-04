@@ -8,23 +8,30 @@
             <th>Equipos</th>
             <th>Lugar</th>
             <th>Fecha</th>
-            <th>Descripción</th>
+            <th>Cantidad de boletas</th>
+            <th>Observaciones</th>
+            <th>Estado</th>
             <th>Opciones</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let libro of libros">
-            <td>5</td>
-            <td>Nacional VS Tigres</td>
-            <td>El campín</td>
-            <td>02-10-2017</td>
-            <td>Descripcion Descripcion Descripcion</td>
+          <tr *ngFor="let partido of partidos">
+            <td>{{partido.id}}</td>
+            <td>{{partido.dtoEquipoLocal.nombre}} VS {{partido.dtoequipoVisitante.nombre}}</td>
+            <td>{{partido.dtoEstadio.nombre}}</td>
+            <td>{{partido.fecha}}</td>
+            <td>{{partido.max_cant_boletas}}</td>
+            <td>{{partido.observaciones}}</td>
+            <td [ngSwitch]="partido.estado">
+              <span *ngSwitchCase="true">Activo</span>
+              <span *ngSwitchCase="false">Inactivo</span>
+            </td>
             <td>
-              <a [routerLink]="['editar/', libro.id]" class="btn #4caf50 green tooltipped" data-tooltip="Editar este partido" data-delay="30">
+              <a [routerLink]="['editar/', partido.id]" class="btn #4caf50 green">
                 <i class="material-icons">edit</i>
               </a>
-              <button (click)="modalEliminar(1)" class="btn #c62828 red darken-3 tooltipped" data-tooltip="Eliminar este partido" data-delay="30">
+              <button (click)="modalEliminar(partido.id)" class="btn #c62828 red darken-3">
                 <i class="material-icons">delete</i>
               </button>
             </td>

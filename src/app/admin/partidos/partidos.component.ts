@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PartidosService } from './partidos.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -10,24 +11,13 @@ declare var $: any;
 })
 export class PartidosComponent implements OnInit {
 
-  libros = [];
+  partidos = [];
 
-  constructor() {
-    this.libros = [
-      { id: 1, descripcion: "dfvdfv erdv drfververvcer verververve rver ververve rver vdrf verve rvcerdr fverver vcerdrfvber vervce rdrfververb vcerdrfver vervce rdrfverve rvcerdr fververv cererv erv" },
-      { id: 2, descripcion: "dfvdfv erdv drfverv ervcerdrfve rvervce rdrfverve rvcer verververve rver ververve rver verv erv" },
-      { id: 3, descripcion: "dfvdfv erdv drfververvce drfververvc erdrfverv ervcerdrfverver vcerdrfve rvervce rdrfv ervervce rdrfver vervcerdrfver vervcerdrfverve rvcerdrfver vervcerdrfververvcerd rfververvce rdrfve rvervcerdr fververvcerr verververve rver ververve rver verv erv" },
-      { id: 4, descripcion: "dfvdfv erdv drfververvcer verververve rver ververve rver verv erv" },
-      { id: 5, descripcion: "dfvdfv erdv drfverd rfververvcerdrfver verv erdrfververvcerdrfververvcerdrfverv ervcerdrfververvcerdrfververvcerdrfververvcerdrfververvcervervcer verververve rver ververve rver verv erv" },
-      { id: 6, descripcion: "dfvdfv erdv drfververvcer verververve rver ververve  rver verv erv" },
-      { id: 7, descripcion: "dfvdfv erdv drfververvcdrfververvcerdrfververvcerer verververve rver ververve rver verv erv" },
-      { id: 8, descripcion: "dfvdfv erdv drfverv ervcer ververve rve rver ververve r verdrfververv cerdrfverver cerdrfver vervcerd rfververvc erdrfverver vcerdrfververv cerdrf ververvcerdr fververv cerdrfv ervervce rdrfve rvervcerd rfverver vcerdrfverve rvcerd rfververvcer verv erv" },
-      { id: 9, descripcion: "dfvdfv erdv drfverv erdrfververvcervcer verververve rver ververve  rver verv erv" },
-      { id: 10, descripcion: "dfvdfv erdv drfververvcer verververve rver ververve rver verv drfve rvervcerdrfververvcerdrfve rve rvcerd rfverve rvcerdrfverve rvcerdrfververvce rdrfverv ervcerdrfve rvervcererv" },
-    ];
-  }
+  constructor(private PartidosService: PartidosService) { }
 
   ngOnInit() {
+
+    this.ObtenerPartidos();
 
     $('.modal').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -39,21 +29,37 @@ export class PartidosComponent implements OnInit {
       // ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
       //   alert("Ready");
       //   console.log(modal, trigger);
-      // },
+      // }, 
       // complete: function() { alert('Closed'); } // Callback for Modal close
     }
-  );
-  
+    );
   }
 
-  modalEliminar(id){
-    console.log(id)
+  ObtenerPartidos(): void {
+    this.PartidosService.cargarPartidos().subscribe(
+      res => { this.partidos = res; console.log(res) },
+      err => { console.log(err); alert(err._body); }
+    );
+  }
+
+  idPartido: Number;
+
+  modalEliminar(id) {
+    this.idPartido = id;
     $('#modalEliminar').modal('open');
   }
 
-  eliminarPartido(id){
-    console.log("Eliminar Partido");
-    $('#modalEliminar').modal('close');
+  eliminarPartido() {
+    this.PartidosService.eliminarPartido(this.idPartido).subscribe(
+      res => {
+        console.log(res);
+        this.ObtenerPartidos();
+        $('#modalEliminar').modal('close');
+      },
+      err => {
+        console.log(err); alert(err._body);
+      }
+    );
   }
 
 }

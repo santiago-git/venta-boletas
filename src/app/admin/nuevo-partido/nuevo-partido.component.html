@@ -1,41 +1,84 @@
 <div class="row">
-  <form class="col s12">
+  <form class="col s12" #partidoForm="ngForm" (ngSubmit)=" enviarPartido(partido)">
     <div class="row">
       <div class="input-field col s6">
-        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-        <label for="first_name">First Name</label>
+        <select class="validate" materialize="material_select" required [(ngModel)]="partido.dtoEquipoLocal.id" name="equ_local">
+          <option value="" disabled selected>Escoge un equipo</option>
+          <option *ngFor="let equipo of equipos" [value]="equipo.id">{{equipo.nombre}}</option>
+        </select>
+        <label>Equipo local</label>
       </div>
       <div class="input-field col s6">
-        <input id="last_name" type="text" class="validate">
-        <label for="last_name">Last Name</label>
+        <select class="validate" materialize="material_select" required [(ngModel)]="partido.dtoequipoVisitante.id" name="equ_visitante">
+          <option value="" disabled selected>Escoge un equipo</option>
+          <option *ngFor="let equipo of equipos" [value]="equipo.id">{{equipo.nombre}}</option>
+        </select>
+        <label>Equipo Visitante</label>
       </div>
     </div>
+
     <div class="row">
       <div class="input-field col s12">
-        <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-        <label for="disabled">Disabled</label>
+        <select class="validate" materialize="material_select" required [(ngModel)]="partido.dtoEstadio.id" name="estadio">
+            <option value="" disabled selected>Escoge un estadio</option>
+            <option *ngFor="let estadio of estadios" [value]="estadio.id">{{estadio.nombre}}</option>
+          </select>
+        <label>Estadio</label>
       </div>
     </div>
+
     <div class="row">
       <div class="input-field col s12">
-        <input id="password" type="password" class="validate">
-        <label for="password">Password</label>
+        <!-- <input id="fecha" type="text" required [(ngModel)]="partido.fecha" name="fecha" class="datepicker"> -->
+
+        <!-- <input id="fecha" type="text" class="datepicker" required [(ngModel)]="partido.fecha" name="fecha">
+        <label for="fecha">Fecha</label> -->
       </div>
-    </div>
+    </div>  
+
+
     <div class="row">
       <div class="input-field col s12">
-        <input id="email" type="email" class="validate">
-        <label for="email">Email</label>
+        <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
+        <label for="cant_max_boletas">Cantidad máxima de boletas</label>
       </div>
     </div>
+
     <div class="row">
-      <div class="col s12">
-        This is an inline input field:
-        <div class="input-field inline">
-          <input id="email" type="email" class="validate">
-          <label for="email" data-error="wrong" data-success="right">Email</label>
+      <div class="input-field col s12">
+        <textarea id="observaciones" class="materialize-textarea" required [(ngModel)]="partido.observaciones" name="observaciones"></textarea>
+        <label for="observaciones">Observaciones</label>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="input-field col s12">
+        <p>
+          <!-- <input type="checkbox" id="activar" required [(ngModel)]="partido.estado" name="estado" value="true"/> -->
+          <label for="activar">Activar partido</label>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field submit-field col s12" align="center">
+        <button *ngIf="!cargando" type='submit' name='btn_crear' class='btn col s12 waves-effect teal' [disabled]="!partidoForm.form.valid">Crear partido</button>
+        <div *ngIf="cargando" class="preloader-wrapper active">
+          <div class="spinner-layer spinner-red-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
   </form>
 </div>
