@@ -28,9 +28,10 @@ export class NuevoPartidoComponent implements OnInit {
     });
   }
 
+  localidadPartido = {};
   partido = {
     id_usuario: 2,
-    fecha: "2017-09-13",
+    // fecha: "2017-09-13",
     max_cant_boletas: 200,
     observaciones: "observaciones",
     estado: true,
@@ -51,24 +52,24 @@ export class NuevoPartidoComponent implements OnInit {
 
   obtenerEquipos(): void {
     this.NuevoPartidoService.cargarEquipos().subscribe(
-      res => { this.equipos = res; console.log(res) },
+      res => { this.equipos = res; },
       err => { console.log(err); alert(err._body); }
     );
   }
 
   obtenerEstadios(): void {
     this.NuevoPartidoService.cargarEstadios().subscribe(
-      res => { this.estadios = res; console.log(res) },
+      res => { this.estadios = res; },
       err => { console.log(err); alert(err._body); }
     );
   }
 
   enviarPartido(partido): void {
     console.log(partido);
+    console.log(this.localidadPartido);
 
     this.NuevoPartidoService.crearPartido(partido).subscribe(
       res => {
-        console.log(res)
         if (res != 0) {
           this.router.navigate(['/admin']);
           Materialize.toast('Partido creado exitosamente!', 4000);

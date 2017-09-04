@@ -31,8 +31,8 @@
       <div class="input-field col s12">
         <!-- <input id="fecha" type="text" required [(ngModel)]="partido.fecha" name="fecha" class="datepicker"> -->
 
-        <!-- <input id="fecha" type="text" class="datepicker" required [(ngModel)]="partido.fecha" name="fecha">
-        <label for="fecha">Fecha</label> -->
+        <input id="fecha" type="text" class="datepicker" [(ngModel)]="partido.fecha" name="fecha">
+        <label for="fecha">Fecha</label>
       </div>
     </div>
 
@@ -43,11 +43,11 @@
           <h5 class="teal-text">Norte</h5>
         </div>
         <div class="input-field col s12">
-          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
+          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="localidadPartido.num1" name="num1">
           <label for="cant_max_boletas">Número de boletas</label>
         </div>
         <div class="input-field col s12">
-          <input id="precio1" type="number" class="validate">
+          <input id="precio1" type="number" class="validate" required [(ngModel)]="localidadPartido.precio1" name="precio1">
           <label for="precio1">Precio</label>
         </div>
       </div>
@@ -57,11 +57,11 @@
           <h5 class="teal-text">Sur</h5>
         </div>
         <div class="input-field col s12">
-          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
+          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="localidadPartido.num2" name="num2">
           <label for="cant_max_boletas">Número de boletas</label>
         </div>
         <div class="input-field col s12">
-          <input id="precio1" type="number" class="validate">
+          <input id="precio1" type="number" class="validate" required [(ngModel)]="localidadPartido.precio2" name="precio2">
           <label for="precio1">Precio</label>
         </div>
       </div>
@@ -71,11 +71,11 @@
           <h5 class="teal-text">Oriente</h5>
         </div>
         <div class="input-field col s12">
-          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
-          <label for="cant_max_boletas">Cantidad máxima de boletas</label>
+          <input id="cant_max_boletas" type="number" class="validate" required required [(ngModel)]="localidadPartido.num3" name="num3">
+          <label for="cant_max_boletas">Número de boletas</label>
         </div>
         <div class="input-field col s12">
-          <input id="precio1" type="number" class="validate">
+          <input id="precio1" type="number" class="validate" required [(ngModel)]="localidadPartido.precio3" name="precio3">
           <label for="precio1">Precio</label>
         </div>
       </div>
@@ -85,11 +85,11 @@
           <h5 class="teal-text">Occidente</h5>
         </div>
         <div class="input-field col s12">
-          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
-          <label for="cant_max_boletas">Cantidad máxima de boletas</label>
+          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="localidadPartido.num4" name="num4">
+          <label for="cant_max_boletas">Número de boletas</label>
         </div>
         <div class="input-field col s12">
-          <input id="precio1" type="number" class="validate">
+          <input id="precio1" type="number" class="validate" required [(ngModel)]="localidadPartido.precio4" name="precio4">
           <label for="precio1">Precio</label>
         </div>
       </div>
