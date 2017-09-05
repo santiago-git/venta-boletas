@@ -37,7 +37,7 @@ export class PartidosComponent implements OnInit {
 
   ObtenerPartidos(): void {
     this.PartidosService.cargarPartidos().subscribe(
-      res => { this.partidos = res;},
+      res => { this.partidos = res; },
       err => { console.log(err); alert(err._body); }
     );
   }
@@ -52,10 +52,12 @@ export class PartidosComponent implements OnInit {
   eliminarPartido() {
     this.PartidosService.eliminarPartido(this.idPartido).subscribe(
       res => {
-        if(res==1){
+        if (res == 1) {
           Materialize.toast('Se ha eliminado el partido', 4000);
           this.ObtenerPartidos();
           $('#modalEliminar').modal('close');
+        } else {
+          Materialize.toast('No se ha podido eliminar', 4000);
         }
         console.log(res);
 
@@ -64,6 +66,30 @@ export class PartidosComponent implements OnInit {
         console.log(err); alert(err._body);
       }
     );
+  }
+
+  cambiarEstado(partido): Boolean {
+    partido.estado = !partido.estado;
+    this.PartidosService.cambiarEstadoPartido(partido).subscribe(
+      res => {
+        console.log(res);
+        if (res == 1) {
+          this.mostrarToast('Se ha cambiado el estado');
+          return partido;
+        } else {
+          partido.estado = !partido.estado;
+          this.mostrarToast('No se ha podido cambiar el estado')
+        }
+      },
+      err => {
+        console.log(err); alert(err._body);
+      }
+    );
+    return partido.estado;
+  }
+
+  mostrarToast(texto): void {
+    Materialize.toast(texto, 4000);    
   }
 
 }

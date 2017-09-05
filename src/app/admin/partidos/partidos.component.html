@@ -24,8 +24,16 @@
             <td>{{partido.max_cant_boletas}}</td>
             <td>{{partido.observaciones}}</td>
             <td [ngSwitch]="partido.estado">
-              <span *ngSwitchCase="true">Activo</span>
-              <span *ngSwitchCase="false">Inactivo</span>
+              <span *ngSwitchCase="true">
+                <button (click)="partido.estado=cambiarEstado(partido)" class="btn #1565c0 blue darken-3 col s12">
+                  Activo
+                </button>
+              </span>
+              <span *ngSwitchCase="false">
+                <button (click)="partido.estado=cambiarEstado(partido)" class="btn #c62828 red darken-3 col s12">
+                  Inactivo
+                </button>
+              </span>
             </td>
             <td>
               <a [routerLink]="['editar/', partido.id]" class="btn #4caf50 green">
