@@ -14,7 +14,7 @@ export class PartidosService {
 
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.get(ConstantesService.API_URL+"partidos", options)
+    return this.http.get(ConstantesService.API_URL+"admin/partidos", options)
       .map(res => res.json());
   }
 
