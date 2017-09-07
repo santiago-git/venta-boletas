@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   ObtenerPartidos(): void {
     this.HomeService.cargarPartidos().subscribe(
-      res => { this.partidos = res; console.log(res) },
+      res => { this.partidos = res; },
       err => { console.log(err); alert(err._body); }
     );
   }

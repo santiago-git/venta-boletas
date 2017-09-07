@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <h4 class="teal-text" align="center">Localidades</h4>
       <div class="col s6 m3">
         <div class="col s12">
@@ -93,16 +93,12 @@
           <label for="precio1">Precio</label>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
       <div class="input-field col s12">
         <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
         <label for="cant_max_boletas">Cantidad máxima de boletas</label>
-      </div>
-      <div class="input-field col s12">
-        <input id="precio1" type="number" class="validate">
-        <label for="precio1">Precio</label>
       </div>
     </div>
 
@@ -141,6 +137,36 @@
         </div>
       </div>
     </div>
+  </form>
+</div>
 
+<!-- Modal Structure -->
+<div id="modalLocalidades" class="modal">
+  <form #localidadesPartidoForm="ngForm" (ngSubmit)=" enviarLocalidadesPartido(localidadesPartido)">
+
+    <div class="modal-content">
+      <h4 class="teal-text" align="center">Localidades</h4>
+
+      <div class="row">
+        <div class="col s6 m3" *ngFor="let localidadPartido of localidadesPartido">
+          <div class="col s12">
+            <h5 class="teal-text">{{localidadPartido.nombre}}</h5>
+          </div>
+          <div class="input-field col s12">
+            <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="localidadPartido.num_boletas" name="num1">
+            <label for="cant_max_boletas">Número de boletas</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="precio" type="number" step=any class="validate" required [(ngModel)]="localidadPartido.precio" name="precio1">
+            <label for="precio">Precio</label>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type='submit' name='btn_guardar' class='btn waves-effect teal' [disabled]="!localidadesPartidoForm.form.valid">Enviar</button>
+    </div>
   </form>
 </div>

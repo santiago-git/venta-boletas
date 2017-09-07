@@ -12,11 +12,13 @@ declare var Materialize: any;
 })
 export class NuevoPartidoComponent implements OnInit {
 
-  constructor(private NuevoPartidoService: NuevoPartidoService, private router: Router) { }
-
-  ngOnInit() {
+  constructor(private NuevoPartidoService: NuevoPartidoService, private router: Router) {
     this.obtenerEquipos();
     this.obtenerEstadios();
+  }
+
+  ngOnInit() {
+    $('.modal').modal();
     $('select').material_select();
     $('.datepicker').pickadate({
       selectMonths: false, // Creates a dropdown to control month
@@ -28,21 +30,21 @@ export class NuevoPartidoComponent implements OnInit {
     });
   }
 
-  localidadPartido = {};
   partido = {
     id_usuario: 2,
     // fecha: "2017-09-13",
-    max_cant_boletas: 200,
-    observaciones: "observaciones",
+    max_cant_boletas: null,
+    observaciones: null,
     estado: true,
+    fecha: "2017-03-05",
     dtoEstadio: {
-      id: 1
+      id: null
     },
     dtoequipoVisitante: {
-      id: 5
+      id: null
     },
     dtoEquipoLocal: {
-      id: 3
+      id: null
     }
   };
 
@@ -66,12 +68,12 @@ export class NuevoPartidoComponent implements OnInit {
 
   enviarPartido(partido): void {
     console.log(partido);
-    console.log(this.localidadPartido);
-
+    // console.log(this.localidadPartido);
     this.NuevoPartidoService.crearPartido(partido).subscribe(
       res => {
         if (res != 0) {
-          this.router.navigate(['/admin']);
+          // this.router.navigate(['/admin']);
+          $('#modalLocalidades').modal('open');
           Materialize.toast('Partido creado exitosamente!', 4000);
         } else {
           Materialize.toast('No se ha podido crear el partido', 4000); // 4000 is the duration of the toast
@@ -79,6 +81,44 @@ export class NuevoPartidoComponent implements OnInit {
       },
       err => { console.log(err); alert(err._body); }
     );
+  }
+
+  localidadesPartido = [
+    { id_partido: 66, id_localidad: 1, nombre: "Norte", num_boletas: null, precio: null },
+    { id_partido: 66, id_localidad: 2, nombre: "Sur", num_boletas: null, precio: null },
+    { id_partido: 66, id_localidad: 3, nombre: "Oriente", num_boletas: null, precio: null },
+    { id_partido: 66, id_localidad: 4, nombre: "Occidente", num_boletas: null, precio: null },
+  ]
+
+  enviarLocalidadesPartido(localidadesPartido): void {
+    console.log(localidadesPartido);
+    $('#modalLocalidades').modal('close');
+    this.NuevoPartidoService.crearLocalidadPartido(localidadesPartido).subscribe(
+      res => {
+        console.log(res)
+        if (res != 0) {
+          Materialize.toast('Se ha insertado todo!', 4000);
+        } else {
+          Materialize.toast('fallo!', 4000);
+        }
+      },
+      err => { console.log(err); alert(err._body); }
+    );
+    // for (let localidadPartido of localidadesPartido) {
+    //   this.NuevoPartidoService.crearLocalidadPartido(localidadPartido).subscribe(
+    //     res => {
+    //       console.log(res)
+    //       if (res != 0) {
+    //         Materialize.toast('Se ha insertado todo!', 4000);
+    //       }else{
+    //         Materialize.toast('fallo!', 4000);
+    //       }
+    //     },
+    //     err => { console.log(err); alert(err._body); }
+    //   );
+    // }
+
+
   }
 
 }

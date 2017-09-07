@@ -38,4 +38,9 @@ export class NuevoPartidoService {
       .map(res => res.json());
   }
 
+  crearLocalidadPartido(localidadesPartido) {
+    return this.http.post(ConstantesService.API_URL+"partidoLocalidades", localidadesPartido)
+      .map(res => res.json());
+  }
+
 }

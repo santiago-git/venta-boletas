@@ -1,1 +1,107 @@
-{{parametro}}
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6"><a class="active" href="#formPartido">Partido</a></li>
+      <li class="tab col s6"><a href="#formLocalidades">Localidades</a></li>
+    </ul>
+  </div>
+
+</div>
+
+
+
+
+<form class="col s12" id="formPartido" #partidoForm="ngForm" (ngSubmit)=" modificarPartido(partido)">
+  <div class="row">
+    <div class="input-field col s6">
+      <select class="validate" materialize="material_select" required [(ngModel)]="partido.dtoEquipoLocal.id" name="equ_local">
+            <option value="" disabled selected>Escoge un equipo</option>
+            <option *ngFor="let equipo of equipos" [value]="equipo.id">{{equipo.nombre}}</option>
+          </select>
+      <label>Equipo local</label>
+    </div>
+    <div class="input-field col s6">
+      <select class="validate" materialize="material_select" required [(ngModel)]="partido.dtoequipoVisitante.id" name="equ_visitante">
+            <option value="" disabled selected>Escoge un equipo</option>
+            <option *ngFor="let equipo of equipos" [value]="equipo.id">{{equipo.nombre}}</option>
+          </select>
+      <label>Equipo Visitante</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <select class="validate" materialize="material_select" required [(ngModel)]="partido.dtoEstadio.id" name="estadio">
+              <option value="" disabled selected>Escoge un estadio</option>
+              <option *ngFor="let estadio of estadios" [value]="estadio.id">{{estadio.nombre}}</option>
+            </select>
+      <label>Estadio</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <!-- <input id="fecha" type="text" required [(ngModel)]="partido.fecha" name="fecha" class="datepicker"> -->
+
+      <input id="fecha" type="text" class="datepicker" [(ngModel)]="partido.fecha" name="fecha">
+      <label for="fecha">Fecha</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="partido.max_cant_boletas" name="cant_max_boletas">
+      <label for="cant_max_boletas">Cantidad máxima de boletas</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="observaciones" class="materialize-textarea" required [(ngModel)]="partido.observaciones" name="observaciones"></textarea>
+      <label for="observaciones">Observaciones</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field submit-field col s12" align="center">
+      <button type='submit' name='btn_crear' class='btn col s12 waves-effect teal' [disabled]="!partidoForm.form.valid">Modificar partido</button>
+    </div>
+  </div>
+
+</form>
+
+
+<div id="formLocalidades" class="col s12">
+  <div class="row">
+    <div *ngIf="!existe">Aun no se han definido las localidades de esta partido
+    </div>
+
+    <h4 class="teal-text" align="center" *ngIf="existe">Localidades</h4>
+
+    <form #localidadesPartidoForm="ngForm" (ngSubmit)=" guardarLocalidadesPartido(localidadesPartido)">
+
+      <div class="col s12 m3" *ngFor="let localidadPartido of localidadesPartido">
+        <div class="col s12">
+          <h5 class="teal-text">{{localidadPartido.id_localidad}}</h5>
+        </div>
+        <div class="input-field col s12">
+          <input id="cant_max_boletas" type="number" class="validate" required [(ngModel)]="localidadPartido.num_boletas" name="num_boletas">
+          <label for="cant_max_boletas">Número de boletas</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="precio" type="number" step=any class="validate" required [(ngModel)]="localidadPartido.precio" name="precio">
+          <label for="precio">Precio</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field submit-field col s12" align="center">
+          <button *ngIf="existe" type='submit' name='btn_crear' class='btn col s12 waves-effect teal' [disabled]="!localidadesPartidoForm.form.valid">Modificar Localidades</button>
+          <button *ngIf="!existe" type='submit' name='btn_crear' class='btn col s12 waves-effect teal' [disabled]="!localidadesPartidoForm.form.valid">Guardar Localidades</button>
+        </div>
+      </div>
+
+    </form>
+
+
+  </div>
+</div>
