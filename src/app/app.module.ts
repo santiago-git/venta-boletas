@@ -16,6 +16,8 @@ import { PartidosService } from './admin/partidos/partidos.service';
 import { NuevoPartidoService } from './admin/nuevo-partido/nuevo-partido.service';
 import { EditarPartidoService } from './admin/editar-partido/editar-partido.service';
 import { DetallesPartidoService } from './detalles-partido/detalles-partido.service';
+import { RegistroClienteService } from './registro-cliente/registro-cliente.service';
+import { ClienteService } from './cliente/cliente.service';
 
 import { MaterializeModule } from 'angular2-materialize';
 import { LibrosComponent } from './libros/libros.component';
@@ -29,6 +31,9 @@ import { DetallesPartidoComponent } from './detalles-partido/detalles-partido.co
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { EditarPartidoComponent } from './admin/editar-partido/editar-partido.component';
+import { CompraBoletaComponent } from './compra-boleta/compra-boleta.component';
+import { RegistroClienteComponent } from './registro-cliente/registro-cliente.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,10 @@ import { EditarPartidoComponent } from './admin/editar-partido/editar-partido.co
     DetallesPartidoComponent,
     AdminComponent,
     HomeComponent,
-    EditarPartidoComponent
+    EditarPartidoComponent,
+    CompraBoletaComponent,
+    RegistroClienteComponent,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +70,8 @@ import { EditarPartidoComponent } from './admin/editar-partido/editar-partido.co
     NuevoPartidoService,
     EditarPartidoService,
     DetallesPartidoService,
+    RegistroClienteService,
+    ClienteService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
+import { ClienteService } from '../cliente/cliente.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   partidos = [];
 
-  constructor(private HomeService: HomeService) { }
+  constructor(private HomeService: HomeService, private ClienteService: ClienteService) { }
 
   ngOnInit() {
     this.ObtenerPartidos();

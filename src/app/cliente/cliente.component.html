@@ -1,0 +1,16 @@
+<header>
+  <nav class="#303f9f indigo darken-2">
+    <div class="nav-wrapper">
+      <!-- <a href="#" class="brand-logo center"><i class="large material-icons logo">confirmation_number</i></a> -->
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a [routerLink]="['']">Home</a></li>
+        <!-- <li><a href="badges.html">Components</a></li> -->
+        <li><a class='btn #c62828 red darken-3' (click)="partidoSeleccionado()">Ver partido seleccionado</a></li>
+        <li><a class='btn #c62828 red darken-3' [routerLink]="['/login']">Iniciar Sesión</a></li>
+        <!-- <li><a [routerLink]="['/login']"><i class="large material-icons">more_vert</i></a></li> -->
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<router-outlet></router-outlet>

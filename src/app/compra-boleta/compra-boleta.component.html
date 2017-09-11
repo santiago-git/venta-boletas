@@ -1,0 +1,22 @@
+<div class="container">
+  <form class="card row" #pagoForm="ngForm" (ngSubmit)=" registrar(cliente)">
+
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12">
+          <span class="card-title">Comprar Boleta</span>
+        </div>
+      </div>
+
+      <div class="row">
+        
+      </div>
+
+    </div>
+    <div class="card-action">
+      <button type='submit' name='btn_registro' class="btn waves-effect waves-light #283593 indigo darken-3 block" [disabled]="!pagoForm.form.valid">Comprar Boleta
+          <!-- <i class="material-icons right">shopping_cart</i> -->
+        </button>
+    </div>
+  </form>
+</div>

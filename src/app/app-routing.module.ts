@@ -9,7 +9,9 @@ import { SesionService } from './servicios/sesion.service';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { EditarPartidoComponent } from './admin/editar-partido/editar-partido.component';
-
+import { CompraBoletaComponent } from './compra-boleta/compra-boleta.component';
+import { RegistroClienteComponent } from './registro-cliente/registro-cliente.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 const routes: Routes = [
   {
@@ -25,12 +27,19 @@ const routes: Routes = [
       { path: '**', redirectTo: 'partido' },
     ]
   },
-  { path: '', component: HomeComponent, data: { title: "Home" } },
-  { path: 'detalles/:partidoId', component: DetallesPartidoComponent, data: { title: "Detalles" } },
+  {
+    path: '', component: ClienteComponent, data: { title: "cliente" }, children: [
+      { path: 'home', component: HomeComponent, data: { title: "Home" } },
+      { path: 'detalles/:partidoId', component: DetallesPartidoComponent, data: { title: "Detalles" } },
+      { path: 'registro', component: RegistroClienteComponent, data: { title: "Regsistrar cliente" } },
+      { path: 'compra-boleta', component: CompraBoletaComponent, data: { title: "Comprar Boleta" } },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },            
+    ]
+  },
+  
   { path: 'login', component: LoginComponent, data: { title: "Login" } },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'home' },
   // { path: 'libros', component: LibrosComponent },  
-  // { path: '', redirectTo: 'login', pathMatch: 'full' }  
 ];
 
 @NgModule({
